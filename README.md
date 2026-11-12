@@ -195,14 +195,16 @@ These are synthetic test results and should not be interpreted as proof of produ
 
 See `backend/docs/data_dictionary.md` for the database schema, columns, relationships, keys and constraints.
 
-## Limitations and Future Improvements
+## Future Enhancements
 
-- Improve behavioral bot detection beyond pre-labelled synthetic signals.
-- Expand testing with larger datasets.
-- Populate and demonstrate event processing history.
-- Improve identity resolution and cross-channel sessionization.
-- Benchmark performance at the 100,000-session and 2-million-event scale.
-- Expand evaluation using more realistic edge cases.
+The current prototype establishes the core Journey Intelligence architecture. The following enhancements are planned to strengthen its scalability, intelligence, and production readiness:
+
+- Develop advanced behavioral bot detection using session activity patterns.
+- Expand performance testing across large-scale datasets.
+- Implement comprehensive event processing history and monitoring.
+- Enhance identity resolution and cross-channel sessionization.
+- Benchmark database and API performance at 100,000 sessions and 2 million events.
+- Evaluate anomaly detection against more diverse and realistic scenarios.
 
 ## Project Repository
 
