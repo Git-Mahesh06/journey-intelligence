@@ -1,11 +1,12 @@
 
-from app.db.database import test_connection
+from app.db.database import test_connection as check_database_connection
 
-try:
-    result = test_connection()
+
+def test_postgres_connection():
+    result = check_database_connection()
+
+    assert result is not None
+    assert result[0] == "journey_intelligence"
+    assert result[1] == "logistics_user"
+
     print("PostgreSQL connection successful!")
-    print("Database:", result[0])
-    print("User:", result[1])
-except Exception as error:
-    print("Database connection failed!")
-    print(error)

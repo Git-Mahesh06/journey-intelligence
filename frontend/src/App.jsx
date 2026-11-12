@@ -39,6 +39,9 @@ function App() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedAnomaly, setSelectedAnomaly] = useState(null);
+  const [sessionEvents, setSessionEvents] = useState([]);
+  const [eventsLoading, setEventsLoading] = useState(false);
+  const [eventsError, setEventsError] = useState("");
 
   const loadDashboard = async () => {
     setLoading(true);
@@ -68,6 +71,34 @@ function App() {
   useEffect(() => {
     loadDashboard();
   }, []);
+  useEffect(() => {
+  if (!selectedAnomaly?.session_id) {
+    setSessionEvents([]);
+    setEventsError("");
+    return;
+  }
+
+  const fetchSessionEvents = async () => {
+    setEventsLoading(true);
+    setEventsError("");
+
+    try {
+      const response = await axios.get(
+        `${API}/sessions/${selectedAnomaly.session_id}/events`
+      );
+
+      setSessionEvents(response.data.events || []);
+    } catch (err) {
+      console.error("Session events API error:", err);
+      setSessionEvents([]);
+      setEventsError("Unable to load session timeline.");
+    } finally {
+      setEventsLoading(false);
+    }
+  };
+
+  fetchSessionEvents();
+}, [selectedAnomaly]);
 
   const money = (value) =>
     new Intl.NumberFormat("en-IN", {
@@ -136,6 +167,22 @@ function App() {
 
   return matchesIssue && matchesSeverity && matchesStatus && matchesSearch;
 });
+
+  const deduplicationCounts = sessionEvents.reduce((counts, event) => {
+  if (event.deduplication_key) {
+    counts[event.deduplication_key] =
+      (counts[event.deduplication_key] || 0) + 1;
+  }
+  return counts;
+}, {}); 
+
+  const biggestDropoff = funnel.reduce(
+  (largest, stage) =>
+    stage.dropoff_sessions > (largest?.dropoff_sessions ?? 0)
+      ? stage
+      : largest,
+  null
+);
   return (
     <div className="app-shell">
       <aside className="sidebar">
@@ -221,55 +268,95 @@ function App() {
             </section>
 
             <section className="content-grid">
-              <div className="panel journey-panel" id="journey">
-                <div className="panel-header">
-                  <div>
-                    <h3>Journey Outcomes</h3>
-                    <p>Distribution of customer session outcomes</p>
-                  </div>
-                  <span className="panel-tag">ALL SESSIONS</span>
-                </div>
 
-                <div className="chart-container">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={funnel}>
-                      <defs>
-                        <linearGradient id="journeyGradient" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#6c8cff" stopOpacity={0.35} />
-                          <stop offset="95%" stopColor="#6c8cff" stopOpacity={0} />
-                        </linearGradient>
-                      </defs>
-                      <CartesianGrid stroke="#263246" strokeDasharray="4 4" />
-                      <XAxis dataKey="stage" stroke="#8995aa" tick={{ fontSize: 11 }} />
-                      <YAxis stroke="#8995aa" tick={{ fontSize: 11 }} />
-                      <Tooltip
-                        contentStyle={{
-                          background: "#172235",
-                          border: "1px solid #33425a",
-                          borderRadius: 10,
-                          color: "#fff",
-                        }}
-                      />
-                      <Area
-                        type="monotone"
-                        dataKey="sessions"
-                        stroke="#7795ff"
-                        strokeWidth={3}
-                        fill="url(#journeyGradient)"
-                      />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
-                <div className="outcome-list">
-                  {funnel.map((item) => (
-                    <div className="outcome-item" key={item.stage}>
-                      <span>{issueLabel(item.stage)}</span>
-                      <strong>{item.sessions}</strong>
-                      <small>{item.conversion_percentage}%</small>
-                    </div>
-                  ))}
-                </div>
-              </div>
+<div className="panel journey-panel" id="journey">
+  <div className="panel-header">
+    <div>
+      <h3>Customer Journey Funnel</h3>
+      <p>Sequential conversion and drop-off analysis</p>
+    </div>
+    <span className="panel-tag">LIVE ANALYTICS</span>
+  </div>
+
+  <div className="funnel-summary">
+    <div>
+      <strong>
+        {funnel.length
+          ? funnel[funnel.length - 1].conversion_percentage
+          : 0}%
+      </strong>
+      <span>Overall conversion</span>
+    </div>
+
+    <div>
+      <strong>{biggestDropoff?.dropoff_sessions ?? 0}</strong>
+      <span>Largest drop-off</span>
+    </div>
+  </div>
+
+  <div className="funnel-list">
+    {funnel.map((item) => (
+        <div className="funnel-stage" key={item.stage_order}>
+          <div className="funnel-stage-header">
+            <div>
+              <span className="stage-number">
+                {String(item.stage_order).padStart(2, "0")}
+              </span>
+              <strong>{item.stage}</strong>
+            </div>
+
+            <strong>
+              {item.sessions.toLocaleString("en-IN")}
+            </strong>
+          </div>
+
+          <div className="funnel-track">
+            <div
+              className="funnel-progress"
+              style={{
+                width: `${item.conversion_percentage}%`,
+              }}
+            />
+          </div>
+
+          <div className="funnel-stage-footer">
+            <span>
+              {item.conversion_percentage}% of initial sessions
+            </span>
+
+            {item.stage_order > 1 && (
+              <span>
+                {item.conversion_from_previous}% stage conversion
+              </span>
+            )}
+          </div>
+
+          {item.dropoff_sessions > 0 && (
+            <div className="dropoff-indicator">
+              <AlertTriangle size={13} />
+              {item.dropoff_sessions.toLocaleString("en-IN")} sessions dropped
+              ({item.dropoff_percentage}%)
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    {biggestDropoff && biggestDropoff.dropoff_sessions > 0 && (
+      <div className="biggest-dropoff">
+        <AlertTriangle size={17} />
+        <div>
+          <strong>Highest friction point</strong>
+          <p>
+            {biggestDropoff.stage}:{" "}
+            {biggestDropoff.dropoff_sessions} sessions dropped
+            ({biggestDropoff.dropoff_percentage}%).
+          </p>
+        </div>
+      </div>
+    )}
+  </div>
+
 
               <div className="panel anomaly-summary" id="anomalies">
                 <div className="panel-header">
@@ -494,6 +581,101 @@ function App() {
           <h4>Why was this anomaly detected?</h4>
           <p>{selectedAnomaly.detection_reason}</p>
         </div>
+          <div className="session-timeline">
+            <div className="timeline-heading">
+              <div>
+                <h4>Customer Session Timeline</h4>
+                <p>
+                  {sessionEvents.length} events · Ordered by ingestion time
+                </p>
+              </div>
+              <span className="panel-tag">SESSION TRACE</span>
+            </div>
+
+            {eventsLoading && <p>Loading session events...</p>}
+
+            {eventsError && (
+              <p className="empty-state">{eventsError}</p>
+            )}
+
+            {!eventsLoading && !eventsError && sessionEvents.length === 0 && (
+              <p className="empty-state">No session events found.</p>
+            )}
+
+
+{!eventsLoading && sessionEvents.map((event) => {
+  const isDuplicate =
+    event.deduplication_key &&
+    deduplicationCounts[event.deduplication_key] > 1;
+
+  // Check whether this is the exact event linked to the anomaly
+  const isAnomalyEvent =
+    event.event_id === selectedAnomaly.event_id;
+
+  const ingestionDelaySeconds = Math.round(
+  (new Date(event.ingestion_timestamp).getTime() -
+    new Date(event.event_timestamp).getTime()) / 1000
+);
+  return (
+    <div
+      className={`timeline-event
+        ${isDuplicate ? "duplicate-event" : ""}
+        ${isAnomalyEvent ? "selected-anomaly-event" : ""}
+      `}
+      key={event.event_id}
+    >
+
+                  <div className="timeline-event-header">
+                    <strong>{event.event_type.replaceAll("_", " ")}</strong>
+
+                    {isDuplicate && (
+                      <span className="duplicate-badge">DUPLICATE</span>
+                    )}
+
+                    {event.is_late && (
+                      <span className="late-badge">LATE EVENT</span>
+                    )}
+                  </div>
+
+                  <small>Event ID: {event.event_id}</small>
+                  <small>Channel: {event.channel || "N/A"}</small>
+
+                  <div className="timeline-timestamps">
+                    <p>
+                      <strong>Event time:</strong>{" "}
+                      {new Date(event.event_timestamp).toLocaleString("en-IN", {
+                        timeZone: "UTC",
+                        dateStyle: "medium",
+                        timeStyle: "medium",
+                      })} UTC
+                    </p>
+
+                    <p>
+                      <strong>Ingestion time:</strong>{" "}
+                      {new Date(event.ingestion_timestamp).toLocaleString("en-IN", {
+                        timeZone: "UTC",
+                        dateStyle: "medium",
+                        timeStyle: "medium",
+                      })} UTC
+                    </p>
+                    <p className="ingestion-delay">
+  <strong>Ingestion delay:</strong>{" "}
+  {ingestionDelaySeconds >= 0
+    ? `${ingestionDelaySeconds} seconds`
+    : `${Math.abs(ingestionDelaySeconds)} seconds earlier than event time`}
+</p>
+                  </div>
+
+                  {event.deduplication_key && (
+                    <p className="dedup-key">
+                      Deduplication key: {event.deduplication_key}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
       </div>
     </div>
   )}

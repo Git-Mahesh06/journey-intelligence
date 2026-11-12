@@ -24,10 +24,16 @@ class AnomalyResponse(BaseModel):
     resolution_status: str
 
 
+
 class FunnelStage(BaseModel):
     stage: str
+    stage_order: int
     sessions: int
     conversion_percentage: float
+    conversion_from_previous: float
+    dropoff_sessions: int
+    dropoff_percentage: float
+
 
 
 class EvaluationResponse(BaseModel):

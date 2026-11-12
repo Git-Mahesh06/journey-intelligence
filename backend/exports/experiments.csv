@@ -1,0 +1,6 @@
+﻿experiment_id,experiment_name,status,start_date,end_date,created_at
+EXP-2026-000001,Checkout Experiment 1,active,2026-10-01,,2026-11-12 08:31:26.991094+00:00
+EXP-2026-000002,Checkout Experiment 2,active,2026-10-01,,2026-11-12 08:31:26.991094+00:00
+EXP-2026-000003,Checkout Experiment 3,active,2026-10-01,,2026-11-12 08:31:26.991094+00:00
+EXP-2026-000004,Checkout Experiment 4,active,2026-10-01,,2026-11-12 08:31:26.991094+00:00
+EXP-2026-000005,Checkout Experiment 5,active,2026-10-01,,2026-11-12 08:31:26.991094+00:00

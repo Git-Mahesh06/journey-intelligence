@@ -1,0 +1,11 @@
+﻿link_id,customer_id,anonymous_id,device_id,consent_status,link_status,valid_from,valid_to,decision_reason,created_at
+LNK-00000001,CUS-004154,ANON-00000001,,denied,rejected,2026-10-01 00:01:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:27.622976+00:00
+LNK-00000101,CUS-004776,ANON-00000101,,denied,rejected,2026-10-01 01:41:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:27.622976+00:00
+LNK-00000201,CUS-004705,ANON-00000201,,denied,rejected,2026-10-01 03:21:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:27.622976+00:00
+LNK-00000301,CUS-004346,ANON-00000301,,denied,rejected,2026-10-01 05:01:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:27.622976+00:00
+LNK-00000401,CUS-001785,ANON-00000401,,denied,rejected,2026-10-01 06:41:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:27.622976+00:00
+LNK-00000501,CUS-002456,ANON-00000501,,denied,rejected,2026-10-01 08:21:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:29.416057+00:00
+LNK-00000601,CUS-000207,ANON-00000601,,denied,rejected,2026-10-01 10:01:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:29.416057+00:00
+LNK-00000701,CUS-001069,ANON-00000701,,denied,rejected,2026-10-01 11:41:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:29.416057+00:00
+LNK-00000801,CUS-002007,ANON-00000801,,denied,rejected,2026-10-01 13:21:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:29.416057+00:00
+LNK-00000901,CUS-004254,ANON-00000901,,denied,rejected,2026-10-01 15:01:00+00:00,,Identity link rejected: consent denied.,2026-11-12 08:31:29.416057+00:00

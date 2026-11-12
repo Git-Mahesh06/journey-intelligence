@@ -1,0 +1,41 @@
+﻿ground_truth_id,session_id,event_id,scenario_type,expected_label,expected_decision,explanation,rules_version,created_at
+GT-SES-2026-000001-ID,SES-2026-000001,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000002-DUP,SES-2026-000002,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000003-BOT,SES-2026-000003,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000100-LATE,SES-2026-000100,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000101-ID,SES-2026-000101,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000102-DUP,SES-2026-000102,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000103-BOT,SES-2026-000103,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000200-LATE,SES-2026-000200,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000201-ID,SES-2026-000201,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000202-DUP,SES-2026-000202,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000203-BOT,SES-2026-000203,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000300-LATE,SES-2026-000300,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000301-ID,SES-2026-000301,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000302-DUP,SES-2026-000302,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000303-BOT,SES-2026-000303,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000400-LATE,SES-2026-000400,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000401-ID,SES-2026-000401,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000402-DUP,SES-2026-000402,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000403-BOT,SES-2026-000403,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000500-LATE,SES-2026-000500,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:27.622976+00:00
+GT-SES-2026-000501-ID,SES-2026-000501,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000502-DUP,SES-2026-000502,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000503-BOT,SES-2026-000503,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000600-LATE,SES-2026-000600,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000601-ID,SES-2026-000601,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000602-DUP,SES-2026-000602,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000603-BOT,SES-2026-000603,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000700-LATE,SES-2026-000700,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000701-ID,SES-2026-000701,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000702-DUP,SES-2026-000702,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000703-BOT,SES-2026-000703,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000800-LATE,SES-2026-000800,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000801-ID,SES-2026-000801,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000802-DUP,SES-2026-000802,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000803-BOT,SES-2026-000803,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000900-LATE,SES-2026-000900,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000901-ID,SES-2026-000901,,incorrect_identity_merge,unauthorized_identity_link,reject_identity_link,Anonymous identity must not be linked without consent.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000902-DUP,SES-2026-000902,,duplicate_conversion,duplicate,count_once,Two payment events reference the same order.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-000903-BOT,SES-2026-000903,,bot_traffic,bot,exclude_from_human_metrics,Session was generated with bot traffic signals.,v1,2026-11-12 08:31:29.416057+00:00
+GT-SES-2026-001000-LATE,SES-2026-001000,,out_of_order,late_event,order_by_event_timestamp,Ingestion timestamps do not preserve event order.,v1,2026-11-12 08:31:29.416057+00:00

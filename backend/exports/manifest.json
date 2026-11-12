@@ -1,0 +1,97 @@
+{
+    "database": "journey_intelligence",
+    "tables": {
+        "anomaly_records": {
+            "row_count": 40,
+            "csv_file": "anomaly_records.csv",
+            "json_file": "anomaly_records.json"
+        },
+        "cart_items": {
+            "row_count": 809,
+            "csv_file": "cart_items.csv",
+            "json_file": "cart_items.json"
+        },
+        "carts": {
+            "row_count": 809,
+            "csv_file": "carts.csv",
+            "json_file": "carts.json"
+        },
+        "customers": {
+            "row_count": 5000,
+            "csv_file": "customers.csv",
+            "json_file": "customers.json"
+        },
+        "event_state_history": {
+            "row_count": 0,
+            "csv_file": "event_state_history.csv",
+            "json_file": "event_state_history.json"
+        },
+        "experiments": {
+            "row_count": 5,
+            "csv_file": "experiments.csv",
+            "json_file": "experiments.json"
+        },
+        "ground_truth": {
+            "row_count": 40,
+            "csv_file": "ground_truth.csv",
+            "json_file": "ground_truth.json"
+        },
+        "identity_links": {
+            "row_count": 10,
+            "csv_file": "identity_links.csv",
+            "json_file": "identity_links.json"
+        },
+        "journey_events": {
+            "row_count": 20000,
+            "csv_file": "journey_events.csv",
+            "json_file": "journey_events.json"
+        },
+        "journey_outcomes": {
+            "row_count": 1000,
+            "csv_file": "journey_outcomes.csv",
+            "json_file": "journey_outcomes.json"
+        },
+        "order_items": {
+            "row_count": 273,
+            "csv_file": "order_items.csv",
+            "json_file": "order_items.json"
+        },
+        "orders": {
+            "row_count": 273,
+            "csv_file": "orders.csv",
+            "json_file": "orders.json"
+        },
+        "pages": {
+            "row_count": 30,
+            "csv_file": "pages.csv",
+            "json_file": "pages.json"
+        },
+        "products": {
+            "row_count": 100,
+            "csv_file": "products.csv",
+            "json_file": "products.json"
+        },
+        "session_experiments": {
+            "row_count": 1000,
+            "csv_file": "session_experiments.csv",
+            "json_file": "session_experiments.json"
+        },
+        "sessions": {
+            "row_count": 1000,
+            "csv_file": "sessions.csv",
+            "json_file": "sessions.json"
+        },
+        "support_tickets": {
+            "row_count": 153,
+            "csv_file": "support_tickets.csv",
+            "json_file": "support_tickets.json"
+        }
+    },
+    "total_rows": 30542,
+    "export_formats": [
+        "CSV",
+        "JSON",
+        "SQL"
+    ],
+    "sql_export_success": true
+}
